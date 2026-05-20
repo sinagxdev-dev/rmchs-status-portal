@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── BACKGROUND ── */
     .bg-pattern {
       position: fixed;
       inset: 0;
@@ -52,7 +51,6 @@
       background-size: 32px 32px;
     }
 
-    /* ── LAYOUT ── */
     .page {
       position: relative;
       z-index: 1;
@@ -61,7 +59,6 @@
       flex-direction: column;
     }
 
-    /* ── HEADER ── */
     header {
       background: var(--green-dark);
       padding: 0;
@@ -81,11 +78,7 @@
       border: 3px solid var(--gold-main);
       object-fit: cover;
       flex-shrink: 0;
-      background: var(--green-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
+      background: transparent;
     }
     .header-text { flex: 1; }
     .header-school {
@@ -125,7 +118,6 @@
       border-bottom-color: var(--gold-main);
     }
 
-    /* ── MAIN ── */
     main {
       flex: 1;
       padding: 48px 24px;
@@ -134,7 +126,6 @@
       width: 100%;
     }
 
-    /* ── HERO ── */
     .hero {
       text-align: center;
       margin-bottom: 40px;
@@ -184,7 +175,6 @@
       line-height: 1.6;
     }
 
-    /* ── LOOKUP CARD ── */
     .lookup-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -278,7 +268,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── ERROR ── */
     .error-box {
       display: none;
       background: #fff5f5;
@@ -291,7 +280,6 @@
       font-weight: 500;
     }
 
-    /* ── RESULT CARD ── */
     .result-card {
       display: none;
       background: var(--white);
@@ -306,7 +294,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Result header */
     .result-header {
       background: linear-gradient(135deg, var(--green-dark), var(--green-main));
       padding: 28px 32px;
@@ -357,14 +344,12 @@
       flex-shrink: 0;
     }
 
-    /* Status badge colors */
     .badge-applied       { background: rgba(147,197,253,0.25); color: #93c5fd; border: 1px solid rgba(147,197,253,0.3); }
     .badge-under-review  { background: rgba(253,230,138,0.25); color: #fde68a; border: 1px solid rgba(253,230,138,0.3); }
     .badge-incomplete    { background: rgba(252,165,165,0.25); color: #fca5a5; border: 1px solid rgba(252,165,165,0.3); }
     .badge-verified      { background: rgba(110,231,183,0.25); color: #6ee7b7; border: 1px solid rgba(110,231,183,0.3); }
     .badge-permit-issued { background: rgba(201,168,76,0.25);  color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); }
 
-    /* ── STEPPER ── */
     .stepper-wrap { padding: 32px 32px 0; }
     .stepper-wrap h3 {
       font-size: 0.75rem;
@@ -420,16 +405,12 @@
       transition: all 0.3s;
       flex-shrink: 0;
     }
-    .step.done .step-circle {
-      background: var(--green-light);
-    }
+    .step.done .step-circle { background: var(--green-light); }
     .step.active .step-circle {
       background: var(--green-main);
       box-shadow: 0 0 0 4px rgba(45,106,79,0.15);
     }
-    .step.incomplete .step-circle {
-      background: #f87171;
-    }
+    .step.incomplete .step-circle { background: #f87171; }
     .step-label {
       font-size: 0.68rem;
       font-weight: 500;
@@ -443,7 +424,6 @@
     .step.active .step-label { color: var(--green-dark); font-weight: 600; }
     .step.incomplete .step-label { color: #dc2626; font-weight: 600; }
 
-    /* ── STATUS MESSAGE ── */
     .status-message {
       margin: 0 32px 24px;
       padding: 16px 20px;
@@ -458,7 +438,6 @@
     .msg-verified      { background: #f0fdf4; color: #166534; border-left: 4px solid #22c55e; }
     .msg-permit-issued { background: #fefce8; color: #713f12; border-left: 4px solid var(--gold-main); }
 
-    /* ── EXAM DETAILS ── */
     .exam-details {
       display: none;
       margin: 0 32px 24px;
@@ -496,7 +475,6 @@
       color: var(--green-dark);
     }
 
-    /* ── DOWNLOAD BUTTON ── */
     .download-wrap {
       display: none;
       margin: 0 32px 32px;
@@ -526,7 +504,6 @@
     }
     .btn-download svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-    /* ── ANNOUNCEMENTS ── */
     .announcements {
       background: var(--white);
       border-radius: var(--radius);
@@ -569,7 +546,6 @@
       line-height: 1.5;
     }
 
-    /* ── FOOTER ── */
     footer {
       background: var(--green-dark);
       color: rgba(255,255,255,0.55);
@@ -580,7 +556,6 @@
     }
     footer strong { color: var(--gold-light); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .header-top { padding: 16px 20px; }
       .header-nav { padding: 0 20px; }
@@ -601,10 +576,9 @@
 <div class="bg-pattern"></div>
 <div class="page">
 
-  <!-- HEADER -->
   <header>
     <div class="header-top">
-      <div class="header-logo">🏫</div>
+      <img class="header-logo" src="https://raw.githubusercontent.com/sinagxdev-dev/rmchs-status-portal/main/rmchs1logo.png" alt="RMCHS Logo"/>
       <div class="header-text">
         <div class="header-school">Ramon Magsaysay (Cubao) High School</div>
         <div class="header-sub">Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp; Admissions Portal</div>
@@ -618,17 +592,14 @@
     </nav>
   </header>
 
-  <!-- MAIN -->
   <main>
 
-    <!-- HERO -->
     <div class="hero">
       <div class="hero-badge">SY 2026-2027 Admissions</div>
       <h1>Check Your <span>Application</span> Status</h1>
       <p>Enter your Applicant ID and registered email address to view your real-time admission status.</p>
     </div>
 
-    <!-- LOOKUP CARD -->
     <div class="lookup-card">
       <h2>Application Lookup</h2>
       <div class="form-row">
@@ -648,10 +619,7 @@
       <div class="error-box" id="errorBox"></div>
     </div>
 
-    <!-- RESULT CARD -->
     <div class="result-card" id="resultCard">
-
-      <!-- Result Header -->
       <div class="result-header">
         <div class="result-header-top">
           <div>
@@ -663,7 +631,6 @@
         </div>
       </div>
 
-      <!-- Stepper -->
       <div class="stepper-wrap">
         <h3>Application Progress</h3>
         <div class="stepper" id="stepper">
@@ -690,10 +657,8 @@
         </div>
       </div>
 
-      <!-- Status Message -->
       <div class="status-message" id="statusMessage"></div>
 
-      <!-- Exam Details -->
       <div class="exam-details" id="examDetails">
         <h3>Examination Details</h3>
         <div class="exam-grid">
@@ -724,7 +689,6 @@
         </div>
       </div>
 
-      <!-- Download Button -->
       <div class="download-wrap" id="downloadWrap">
         <a class="btn-download" id="downloadBtn" href="#" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -735,10 +699,8 @@
           Download & Print Test Permit (A4)
         </a>
       </div>
-
     </div>
 
-    <!-- ANNOUNCEMENTS -->
     <div class="announcements">
       <h2>Announcements</h2>
       <div class="announcement-item">
@@ -760,7 +722,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <strong>Ramon Magsaysay (Cubao) High School</strong> &nbsp;|&nbsp;
     Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp;
@@ -770,7 +731,7 @@
 </div>
 
 <script>
- const API_URL = "https://script.google.com/macros/s/AKfycbzbmw_YLd6Mq0qH0tARe2Nd32EUx0GyVFPmEFaSwvmlo0HZnezgA2FLt-OHgQINmAA3/exec";
+  const API_URL = "https://script.google.com/macros/s/AKfycbzbmw_YLd6Mq0qH0tARe2Nd32EUx0GyVFPmEFaSwvmlo0HZnezgA2FLt-OHgQINmAA3/exec";
 
   const STATUS_CONFIG = {
     "Applied": {
@@ -821,13 +782,11 @@
     const errorBox = document.getElementById("errorBox");
     const resultCard = document.getElementById("resultCard");
 
-    // Validate
     if (!applicantId || !email) {
       showError("Please enter both your Applicant ID and email address.");
       return;
     }
 
-    // Loading state
     btn.disabled = true;
     btnText.style.display = "none";
     spinner.style.display = "block";
@@ -858,7 +817,6 @@
   function renderResult(data) {
     const config = STATUS_CONFIG[data.status] || STATUS_CONFIG["Applied"];
 
-    // Header
     document.getElementById("resultId").textContent = data.applicantId;
     document.getElementById("resultName").textContent = data.fullName;
     document.getElementById("resultProgram").textContent = data.program;
@@ -867,7 +825,6 @@
     badge.className = "result-status-badge " + config.badge;
     badge.textContent = config.label;
 
-    // Stepper
     STEP_IDS.forEach((id, i) => {
       const el = document.getElementById(id);
       el.className = "step";
@@ -877,12 +834,10 @@
       else if (state === "incomplete") el.classList.add("incomplete");
     });
 
-    // Status message
     const msgEl = document.getElementById("statusMessage");
     msgEl.className = "status-message " + config.msg;
     msgEl.textContent = config.message;
 
-    // Exam details — show only if Permit Issued
     const examDetails = document.getElementById("examDetails");
     const downloadWrap = document.getElementById("downloadWrap");
 
@@ -897,14 +852,12 @@
       document.getElementById("permitType").textContent = data.permitType || "—";
       document.getElementById("dateIssued").textContent = data.dateIssued || "—";
 
-      const dlBtn = document.getElementById("downloadBtn");
-      dlBtn.href = data.permitUrl || "#";
+      document.getElementById("downloadBtn").href = data.permitUrl || "#";
     } else {
       examDetails.style.display = "none";
       downloadWrap.style.display = "none";
     }
 
-    // Show result
     document.getElementById("resultCard").style.display = "block";
     document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -915,7 +868,6 @@
     errorBox.style.display = "block";
   }
 
-  // Allow Enter key to submit
   document.addEventListener("keydown", function(e) {
     if (e.key === "Enter") checkStatus();
   });
