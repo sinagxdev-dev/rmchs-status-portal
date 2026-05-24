@@ -504,6 +504,103 @@
     }
     .btn-download svg { width: 18px; height: 18px; flex-shrink: 0; }
 
+    /* ── RESUBMIT SECTION ── */
+    .resubmit-wrap {
+      display: none;
+      margin: 0 32px 32px;
+    }
+    .officer-notes-box {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .officer-notes-box .notes-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #dc2626;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .officer-notes-box .notes-text {
+      font-size: 0.875rem;
+      color: #991b1b;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .resubmit-card {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1.5px dashed var(--gray-300);
+    }
+    .resubmit-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .file-upload-group {
+      margin-bottom: 14px;
+    }
+    .file-upload-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .file-upload-group input[type="file"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      background: var(--white);
+      cursor: pointer;
+    }
+    .btn-resubmit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 16px;
+      letter-spacing: 0.3px;
+    }
+    .btn-resubmit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(220,38,38,0.25);
+    }
+    .btn-resubmit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .resubmit-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.875rem;
+      color: #166534;
+      font-weight: 500;
+      margin-top: 16px;
+      text-align: center;
+    }
+
     .announcements {
       background: var(--white);
       border-radius: var(--radius);
@@ -566,6 +663,7 @@
       .stepper-wrap { padding: 24px 20px 0; }
       .exam-details { margin: 0 20px 20px; }
       .download-wrap { margin: 0 20px 24px; }
+      .resubmit-wrap { margin: 0 20px 24px; }
       .status-message { margin: 0 20px 20px; }
       .exam-grid { grid-template-columns: 1fr; }
       .announcements { padding: 20px; }
@@ -620,6 +718,7 @@
     </div>
 
     <div class="result-card" id="resultCard">
+
       <div class="result-header">
         <div class="result-header-top">
           <div>
@@ -699,6 +798,35 @@
           Download & Print Test Permit (A4)
         </a>
       </div>
+
+      <div class="resubmit-wrap" id="resubmitWrap">
+        <div class="officer-notes-box">
+          <div class="notes-label">Officer's Notes</div>
+          <div class="notes-text" id="officerNotes"></div>
+        </div>
+        <div class="resubmit-card">
+          <h4>Resubmit Your Documents</h4>
+          <div class="file-upload-group">
+            <label>PSA Birth Certificate *</label>
+            <input type="file" id="filePSA" accept=".pdf,image/*"/>
+          </div>
+          <div class="file-upload-group">
+            <label>Transcript of Records / Form 138 *</label>
+            <input type="file" id="fileForm138" accept=".pdf,image/*"/>
+          </div>
+          <div class="file-upload-group">
+            <label>Good Moral Certificate *</label>
+            <input type="file" id="fileGoodMoral" accept=".pdf,image/*"/>
+          </div>
+          <button class="btn-resubmit" id="resubmitBtn" onclick="submitResubmission()">
+            Submit Documents
+          </button>
+          <div class="resubmit-success" id="resubmitSuccess">
+            Your documents have been resubmitted successfully! You will receive a confirmation email shortly.
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="announcements">
@@ -752,7 +880,7 @@
       badge: "badge-incomplete",
       label: "Incomplete",
       msg: "msg-incomplete",
-      message: "Some of your submitted documents need attention. Please check your email for instructions on how to resubmit your documents.",
+      message: "Some of your submitted documents need attention. Please review the officer's notes below and resubmit your documents.",
       steps: ["done", "done", "incomplete", "none", "none"]
     },
     "Verified": {
@@ -840,6 +968,11 @@
 
     const examDetails = document.getElementById("examDetails");
     const downloadWrap = document.getElementById("downloadWrap");
+    const resubmitWrap = document.getElementById("resubmitWrap");
+
+    examDetails.style.display = "none";
+    downloadWrap.style.display = "none";
+    resubmitWrap.style.display = "none";
 
     if (data.status === "Permit Issued") {
       examDetails.style.display = "block";
@@ -851,11 +984,19 @@
       document.getElementById("reportTime").textContent = data.reportTime || "—";
       document.getElementById("permitType").textContent = data.permitType || "—";
       document.getElementById("dateIssued").textContent = data.dateIssued || "—";
-
       document.getElementById("downloadBtn").href = data.permitUrl || "#";
-    } else {
-      examDetails.style.display = "none";
-      downloadWrap.style.display = "none";
+
+    } else if (data.status === "Incomplete") {
+      resubmitWrap.style.display = "block";
+
+      const notes = data.officerNotes || "";
+      document.getElementById("officerNotes").textContent =
+        notes && !notes.startsWith("Drive Folder")
+          ? notes
+          : "Please resubmit your documents. Make sure they are clear, complete, and readable.";
+
+      window._resubmitToken = data.resubmitToken;
+      window._applicantId = data.applicantId;
     }
 
     document.getElementById("resultCard").style.display = "block";
@@ -866,6 +1007,66 @@
     const errorBox = document.getElementById("errorBox");
     errorBox.textContent = msg;
     errorBox.style.display = "block";
+  }
+
+  async function submitResubmission() {
+    const filePSA = document.getElementById("filePSA").files[0];
+    const fileForm138 = document.getElementById("fileForm138").files[0];
+    const fileGoodMoral = document.getElementById("fileGoodMoral").files[0];
+
+    if (!filePSA || !fileForm138 || !fileGoodMoral) {
+      alert("Please upload all 3 required documents before submitting.");
+      return;
+    }
+
+    const btn = document.getElementById("resubmitBtn");
+    btn.disabled = true;
+    btn.textContent = "Uploading...";
+
+    try {
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const [psaData, form138Data, goodMoralData] = await Promise.all([
+        toBase64(filePSA),
+        toBase64(fileForm138),
+        toBase64(fileGoodMoral)
+      ]);
+
+      const payload = {
+        applicant_id: window._applicantId,
+        resubmit_token: window._resubmitToken,
+        files: [
+          { name: "PSA_" + filePSA.name, mimeType: filePSA.type, data: psaData },
+          { name: "Form138_" + fileForm138.name, mimeType: fileForm138.type, data: form138Data },
+          { name: "GoodMoral_" + fileGoodMoral.name, mimeType: fileGoodMoral.type, data: goodMoralData }
+        ]
+      };
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        document.getElementById("resubmitSuccess").style.display = "block";
+        btn.style.display = "none";
+      } else {
+        alert(data.message || "Submission failed. Please try again.");
+        btn.disabled = false;
+        btn.textContent = "Submit Documents";
+      }
+
+    } catch (err) {
+      alert("An error occurred. Please try again.");
+      btn.disabled = false;
+      btn.textContent = "Submit Documents";
+    }
   }
 
   document.addEventListener("keydown", function(e) {
