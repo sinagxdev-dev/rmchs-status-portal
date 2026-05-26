@@ -11,7 +11,7 @@
       --green-main:  #2d6a4f;
       --green-light: #52b788;
       --gold-main:   #c9a84c;
-      --gold-light:  #f0d080
+      --gold-light:  #f0d080;
       --cream:       #fdfaf4;
       --white:       #ffffff;
       --gray-100:    #f5f5f0;
@@ -756,6 +756,7 @@
       font-weight: 500;
     }
     .contact-item a:hover { text-decoration: underline; }
+    
     .focal-persons {
       background: var(--gray-100);
       border-radius: 12px;
@@ -862,620 +863,613 @@
   </style>
 </head>
 <body>
-<div class="bg-pattern"></div>
-<div class="page">
+  <div class="bg-pattern"></div>
+  <div class="page">
 
-  <header>
-    <div class="header-top">
-      <img class="header-logo" src="https://raw.githubusercontent.com/sinagxdev-dev/rmchs-status-portal/main/rmchs1logo.png" alt="RMCHS Logo"/>
-      <div class="header-text">
-        <div class="header-school">Ramon Magsaysay (Cubao) High School</div>
-        <div class="header-sub">Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp; Admissions Portal</div>
-      </div>
-    </div>
-    <nav class="header-nav">
-      <a onclick="showTab('home')" class="active" id="nav-home">Home</a>
-      <a onclick="showTab('announcements')" id="nav-announcements">Announcements</a>
-      <a onclick="showTab('programs')" id="nav-programs">Programs Offered</a>
-      <a onclick="showTab('contact')" id="nav-contact">Contact Us</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ── HOME TAB ── -->
-    <div class="tab-page active" id="tab-home">
-      <div class="hero">
-        <div class="hero-badge">SY 2026-2027 Admissions</div>
-        <h1>Check Your <span>Application</span> Status</h1>
-        <p>Enter your Applicant ID and registered email address to view your real-time admission status.</p>
-      </div>
-
-      <div class="lookup-card">
-        <h2>Application Lookup</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Applicant ID</label>
-            <input type="text" id="applicantId" placeholder="e.g. RMCHS-2026-0001" autocomplete="off"/>
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="email" placeholder="your@email.com" autocomplete="off"/>
-          </div>
+    <header>
+      <div class="header-top">
+        <img class="header-logo" src="https://raw.githubusercontent.com/sinagxdev-dev/rmchs-status-portal/main/rmchs1logo.png" alt="RMCHS Logo"/>
+        <div class="header-text">
+          <div class="header-school">Ramon Magsaysay (Cubao) High School</div>
+          <div class="header-sub">Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp; Admissions Portal</div>
         </div>
-        <button class="btn-check" id="checkBtn" onclick="checkStatus()">
-          <span id="btnText">Check My Status</span>
-          <div class="spinner" id="spinner"></div>
-        </button>
-        <div class="error-box" id="errorBox"></div>
       </div>
+      <nav class="header-nav">
+        <a onclick="showTab('home')" class="active" id="nav-home">Home</a>
+        <a onclick="showTab('announcements')" id="nav-announcements">Announcements</a>
+        <a onclick="showTab('programs')" id="nav-programs">Programs Offered</a>
+        <a onclick="showTab('contact')" id="nav-contact">Contact Us</a>
+      </nav>
+    </header>
 
-      <div class="result-card" id="resultCard">
-        <div class="result-header">
-          <div class="result-header-top">
-            <div>
-              <div class="result-id" id="resultId"></div>
-              <div class="result-name" id="resultName"></div>
-              <div class="result-program" id="resultProgram"></div>
-            </div>
-            <div class="result-status-badge" id="resultBadge"></div>
-          </div>
+    <main>
+
+      <div class="tab-page active" id="tab-home">
+        <div class="hero">
+          <div class="hero-badge">SY 2026-2027 Admissions</div>
+          <h1>Check Your <span>Application</span> Status</h1>
+          <p>Enter your Applicant ID and registered email address to view your real-time admission status.</p>
         </div>
 
-        <div class="stepper-wrap">
-          <h3>Application Progress</h3>
-          <div class="stepper">
-            <div class="step" id="step-applied">
-              <div class="step-circle">1</div>
-              <div class="step-label">Applied</div>
+        <div class="lookup-card">
+          <h2>Application Lookup</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Applicant ID</label>
+              <input type="text" id="applicantId" placeholder="e.g. RMCHS-2026-0001" autocomplete="off"/>
             </div>
-            <div class="step" id="step-review">
-              <div class="step-circle">2</div>
-              <div class="step-label">Under Review</div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" autocomplete="off"/>
             </div>
-            <div class="step" id="step-incomplete">
-              <div class="step-circle">!</div>
-              <div class="step-label">Incomplete</div>
+          </div>
+          <button class="btn-check" id="checkBtn" onclick="checkStatus()">
+            <span id="btnText">Check My Status</span>
+            <div class="spinner" id="spinner"></div>
+          </button>
+          <div class="error-box" id="errorBox"></div>
+        </div>
+
+        <div class="result-card" id="resultCard">
+          <div class="result-header">
+            <div class="result-header-top">
+              <div>
+                <div class="result-id" id="resultId"></div>
+                <div class="result-name" id="resultName"></div>
+                <div class="result-program" id="resultProgram"></div>
+              </div>
+              <div class="result-status-badge" id="resultBadge"></div>
             </div>
-            <div class="step" id="step-verified">
-              <div class="step-circle">3</div>
-              <div class="step-label">Verified</div>
+          </div>
+
+          <div class="stepper-wrap">
+            <h3>Application Progress</h3>
+            <div class="stepper">
+              <div class="step" id="step-applied">
+                <div class="step-circle">1</div>
+                <div class="step-label">Applied</div>
+              </div>
+              <div class="step" id="step-review">
+                <div class="step-circle">2</div>
+                <div class="step-label">Under Review</div>
+              </div>
+              <div class="step" id="step-incomplete">
+                <div class="step-circle">!</div>
+                <div class="step-label">Incomplete</div>
+              </div>
+              <div class="step" id="step-verified">
+                <div class="step-circle">3</div>
+                <div class="step-label">Verified</div>
+              </div>
+              <div class="step" id="step-permit">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Permit Issued</div>
+              </div>
             </div>
-            <div class="step" id="step-permit">
-              <div class="step-circle">✓</div>
-              <div class="step-label">Permit Issued</div>
+          </div>
+
+          <div class="status-message" id="statusMessage"></div>
+
+          <div class="exam-details" id="examDetails">
+            <h3>Examination Details</h3>
+            <div class="exam-grid">
+              <div class="exam-item">
+                <div class="exam-item-label">Date of Exam</div>
+                <div class="exam-item-value" id="examDate"></div>
+              </div>
+              <div class="exam-item">
+                <div class="exam-item-label">Exam Time</div>
+                <div class="exam-item-value" id="examTime"></div>
+              </div>
+              <div class="exam-item">
+                <div class="exam-item-label">Venue / Room</div>
+                <div class="exam-item-value" id="examVenue"></div>
+              </div>
+              <div class="exam-item">
+                <div class="exam-item-label">Report Time</div>
+                <div class="exam-item-value" id="reportTime"></div>
+              </div>
+              <div class="exam-item">
+                <div class="exam-item-label">Permit Type</div>
+                <div class="exam-item-value" id="permitType"></div>
+              </div>
+              <div class="exam-item">
+                <div class="exam-item-label">Date Issued</div>
+                <div class="exam-item-value" id="dateIssued"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="download-wrap" id="downloadWrap">
+            <a class="btn-download" id="downloadBtn" href="#" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download & Print Test Permit (A4)
+            </a>
+          </div>
+
+          <div class="resubmit-wrap" id="resubmitWrap">
+            <div class="officer-notes-box">
+              <div class="notes-label">Officer's Notes</div>
+              <div class="notes-text" id="officerNotes"></div>
+            </div>
+            <div class="resubmit-card">
+              <h4>Resubmit Your Documents</h4>
+              <div class="file-upload-group">
+                <label>PSA Birth Certificate *</label>
+                <input type="file" id="filePSA" accept=".pdf,image/*"/>
+              </div>
+              <div class="file-upload-group">
+                <label>Transcript of Records / Form 138 *</label>
+                <input type="file" id="fileForm138" accept=".pdf,image/*"/>
+              </div>
+              <div class="file-upload-group">
+                <label>Good Moral Certificate *</label>
+                <input type="file" id="fileGoodMoral" accept=".pdf,image/*"/>
+              </div>
+              <button class="btn-resubmit" id="resubmitBtn" onclick="submitResubmission()">
+                Submit Documents
+              </button>
+              <div class="resubmit-success" id="resubmitSuccess">
+                Your documents have been resubmitted successfully! You will receive a confirmation email shortly.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="status-message" id="statusMessage"></div>
+        <div class="home-announcements">
+          <h2>Announcements</h2>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Admission Application for SY 2026-2027 is Now Open</div>
+            <div class="announcement-body">Applications for incoming Grade 7 students are now being accepted. Please submit all required documents through the online application form.</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Examination Schedule</div>
+            <div class="announcement-body">Written examinations for STE and Regular applicants are scheduled on June 21, 2026. SPA skill tests will be held on June 22, 2026.</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Requirements Reminder</div>
+            <div class="announcement-body">All applicants must submit a PSA Birth Certificate, Transcript of Records (Form 138), and Good Moral Certificate. Incomplete submissions will be marked for resubmission.</div>
+          </div>
+        </div>
+      </div>
 
-        <div class="exam-details" id="examDetails">
-          <h3>Examination Details</h3>
-          <div class="exam-grid">
+      <div class="tab-page" id="tab-announcements">
+        <div class="page-header">
+          <h1>Announcements</h1>
+          <p>Latest news and updates from the RMCHS Admissions Office</p>
+        </div>
+        <div class="content-card">
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Admission Application for SY 2026-2027 is Now Open</div>
+            <div class="announcement-body">Applications for incoming Grade 7 students are now being accepted for School Year 2026-2027. Applicants must submit all required documents through the online application form. The application period will run until slots are filled. Early submission is highly encouraged.</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Examination Schedule Announced</div>
+            <div class="announcement-body">Written examinations for STE and Regular applicants are scheduled on June 21, 2026. STE examinees are assigned to Room 101 while Regular examinees will be in Rooms 102 and 103. SPA skill tests will be conducted separately on June 22, 2026 in their respective venues.</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Requirements Reminder</div>
+            <div class="announcement-body">All applicants must submit a PSA Birth Certificate, Transcript of Records (Form 138), and Good Moral Certificate. Documents must be clear and readable. Blurry or incomplete submissions will be marked as Incomplete and applicants will be asked to resubmit.</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Grade Requirements per Program</div>
+            <div class="announcement-body">STE applicants must have a minimum grade of 90 in English, Mathematics, and Science. Regular applicants must have a minimum grade of 80 in all subjects. SPA applicants must pass the face-to-face skill test in their chosen specialization (Dance, Music, or Media Arts).</div>
+          </div>
+          <div class="announcement-item">
+            <div class="announcement-date">May 19, 2026</div>
+            <div class="announcement-title">Status Portal Now Available</div>
+            <div class="announcement-body">Applicants can now check their real-time application status through this portal. Simply enter your Applicant ID and registered email address on the Home page. Your Applicant ID was sent to your email upon submission of your application.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-page" id="tab-programs">
+        <div class="page-header">
+          <h1>Programs Offered</h1>
+          <p>Junior High School programs available for SY 2026-2027</p>
+        </div>
+
+        <div class="content-card">
+          <h2>Academic Track</h2>
+          <div class="section-sub">College preparatory programs with specialized curriculum</div>
+          <div class="program-grid">
+            <div class="program-card">
+              <div class="program-code">STE</div>
+              <h3>Science, Technology and Engineering</h3>
+              <p>Designed for learners passionate about science, technology, and engineering through scientific inquiry and mathematical theory.</p>
+              <span class="requirements-tag">Min. 90 in English, Math, Science</span>
+            </div>
+            <div class="program-card">
+              <div class="program-code">Regular</div>
+              <h3>Regular Junior High School</h3>
+              <p>The standard Junior High School program following the K-12 curriculum with a well-rounded academic foundation.</p>
+              <span class="requirements-tag">Min. 80 in all subjects</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Special Programs</h2>
+          <div class="section-sub">Specialized tracks requiring a skill test and audition</div>
+          <div class="program-grid">
+            <div class="program-card gold">
+              <div class="program-code" style="color: var(--gold-main);">SPA — Dance</div>
+              <h3>Special Program in the Arts</h3>
+              <p>For students passionate about interpretative and modern dance. Prepare one music piece for the skill test.</p>
+              <span class="requirements-tag">Requirements + F2F Skill Test</span>
+            </div>
+            <div class="program-card gold">
+              <div class="program-code" style="color: var(--gold-main);">SPA — Music</div>
+              <h3>Special Program in the Arts</h3>
+              <p>For students with a passion for music. Prepare one song (Tagalog or English). You may bring your own instrument.</p>
+              <span class="requirements-tag">Requirements + F2F Skill Test</span>
+            </div>
+            <div class="program-card gold">
+              <div class="program-code" style="color: var(--gold-main);">SPA — Media Arts</div>
+              <h3>Special Program in the Arts</h3>
+              <p>For aspiring content creators and digital artists. Prepare a sample edited photo, video, or graphic design.</p>
+              <span class="requirements-tag">Requirements + F2F Skill Test</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Admission Requirements</h2>
+          <div class="section-sub">Required for all applicants regardless of program</div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="exam-item">
-              <div class="exam-item-label">Date of Exam</div>
-              <div class="exam-item-value" id="examDate"></div>
+              <div class="exam-item-label">Document 1</div>
+              <div class="exam-item-value">PSA Birth Certificate (photocopy or scanned copy)</div>
             </div>
             <div class="exam-item">
-              <div class="exam-item-label">Exam Time</div>
-              <div class="exam-item-value" id="examTime"></div>
+              <div class="exam-item-label">Document 2</div>
+              <div class="exam-item-value">Transcript of Records / Form 138 (Grade 6 report card)</div>
             </div>
             <div class="exam-item">
-              <div class="exam-item-label">Venue / Room</div>
-              <div class="exam-item-value" id="examVenue"></div>
-            </div>
-            <div class="exam-item">
-              <div class="exam-item-label">Report Time</div>
-              <div class="exam-item-value" id="reportTime"></div>
-            </div>
-            <div class="exam-item">
-              <div class="exam-item-label">Permit Type</div>
-              <div class="exam-item-value" id="permitType"></div>
-            </div>
-            <div class="exam-item">
-              <div class="exam-item-label">Date Issued</div>
-              <div class="exam-item-value" id="dateIssued"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="download-wrap" id="downloadWrap">
-          <a class="btn-download" id="downloadBtn" href="#" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download & Print Test Permit (A4)
-          </a>
-        </div>
-
-        <div class="resubmit-wrap" id="resubmitWrap">
-          <div class="officer-notes-box">
-            <div class="notes-label">Officer's Notes</div>
-            <div class="notes-text" id="officerNotes"></div>
-          </div>
-          <div class="resubmit-card">
-            <h4>Resubmit Your Documents</h4>
-            <div class="file-upload-group">
-              <label>PSA Birth Certificate *</label>
-              <input type="file" id="filePSA" accept=".pdf,image/*"/>
-            </div>
-            <div class="file-upload-group">
-              <label>Transcript of Records / Form 138 *</label>
-              <input type="file" id="fileForm138" accept=".pdf,image/*"/>
-            </div>
-            <div class="file-upload-group">
-              <label>Good Moral Certificate *</label>
-              <input type="file" id="fileGoodMoral" accept=".pdf,image/*"/>
-            </div>
-            <button class="btn-resubmit" id="resubmitBtn" onclick="submitResubmission()">
-              Submit Documents
-            </button>
-            <div class="resubmit-success" id="resubmitSuccess">
-              Your documents have been resubmitted successfully! You will receive a confirmation email shortly.
+              <div class="exam-item-label">Document 3</div>
+              <div class="exam-item-value">Good Moral Certificate from current or previous school</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="home-announcements">
-        <h2>Announcements</h2>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Admission Application for SY 2026-2027 is Now Open</div>
-          <div class="announcement-body">Applications for incoming Grade 7 students are now being accepted. Please submit all required documents through the online application form.</div>
+      <div class="tab-page" id="tab-contact">
+        <div class="page-header">
+          <h1>Contact Us</h1>
+          <p>Reach out to the RMCHS Admissions Office for inquiries</p>
         </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Examination Schedule</div>
-          <div class="announcement-body">Written examinations for STE and Regular applicants are scheduled on June 21, 2026. SPA skill tests will be held on June 22, 2026.</div>
-        </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Requirements Reminder</div>
-          <div class="announcement-body">All applicants must submit a PSA Birth Certificate, Transcript of Records (Form 138), and Good Moral Certificate. Incomplete submissions will be marked for resubmission.</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ── ANNOUNCEMENTS TAB ── -->
-    <div class="tab-page" id="tab-announcements">
-      <div class="page-header">
-        <h1>Announcements</h1>
-        <p>Latest news and updates from the RMCHS Admissions Office</p>
-      </div>
-      <div class="content-card">
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Admission Application for SY 2026-2027 is Now Open</div>
-          <div class="announcement-body">Applications for incoming Grade 7 students are now being accepted for School Year 2026-2027. Applicants must submit all required documents through the online application form. The application period will run until slots are filled. Early submission is highly encouraged.</div>
-        </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Examination Schedule Announced</div>
-          <div class="announcement-body">Written examinations for STE and Regular applicants are scheduled on June 21, 2026. STE examinees are assigned to Room 101 while Regular examinees will be in Rooms 102 and 103. SPA skill tests will be conducted separately on June 22, 2026 in their respective venues.</div>
-        </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Requirements Reminder</div>
-          <div class="announcement-body">All applicants must submit a PSA Birth Certificate, Transcript of Records (Form 138), and Good Moral Certificate. Documents must be clear and readable. Blurry or incomplete submissions will be marked as Incomplete and applicants will be asked to resubmit.</div>
-        </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Grade Requirements per Program</div>
-          <div class="announcement-body">STE applicants must have a minimum grade of 90 in English, Mathematics, and Science. Regular applicants must have a minimum grade of 80 in all subjects. SPA applicants must pass the face-to-face skill test in their chosen specialization (Dance, Music, or Media Arts).</div>
-        </div>
-        <div class="announcement-item">
-          <div class="announcement-date">May 19, 2026</div>
-          <div class="announcement-title">Status Portal Now Available</div>
-          <div class="announcement-body">Applicants can now check their real-time application status through this portal. Simply enter your Applicant ID and registered email address on the Home page. Your Applicant ID was sent to your email upon submission of your application.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PROGRAMS TAB ── -->
-    <div class="tab-page" id="tab-programs">
-      <div class="page-header">
-        <h1>Programs Offered</h1>
-        <p>Junior High School programs available for SY 2026-2027</p>
-      </div>
-
-      <div class="content-card">
-        <h2>Academic Track</h2>
-        <div class="section-sub">College preparatory programs with specialized curriculum</div>
-        <div class="program-grid">
-          <div class="program-card">
-            <div class="program-code">STE</div>
-            <h3>Science, Technology and Engineering</h3>
-            <p>Designed for learners passionate about science, technology, and engineering through scientific inquiry and mathematical theory.</p>
-            <span class="requirements-tag">Min. 90 in English, Math, Science</span>
-          </div>
-          <div class="program-card">
-            <div class="program-code">Regular</div>
-            <h3>Regular Junior High School</h3>
-            <p>The standard Junior High School program following the K-12 curriculum with a well-rounded academic foundation.</p>
-            <span class="requirements-tag">Min. 80 in all subjects</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card">
-        <h2>Special Programs</h2>
-        <div class="section-sub">Specialized tracks requiring a skill test and audition</div>
-        <div class="program-grid">
-          <div class="program-card gold">
-            <div class="program-code" style="color: var(--gold-main);">SPA — Dance</div>
-            <h3>Special Program in the Arts</h3>
-            <p>For students passionate about interpretative and modern dance. Prepare one music piece for the skill test.</p>
-            <span class="requirements-tag">Requirements + F2F Skill Test</span>
-          </div>
-          <div class="program-card gold">
-            <div class="program-code" style="color: var(--gold-main);">SPA — Music</div>
-            <h3>Special Program in the Arts</h3>
-            <p>For students with a passion for music. Prepare one song (Tagalog or English). You may bring your own instrument.</p>
-            <span class="requirements-tag">Requirements + F2F Skill Test</span>
-          </div>
-          <div class="program-card gold">
-            <div class="program-code" style="color: var(--gold-main);">SPA — Media Arts</div>
-            <h3>Special Program in the Arts</h3>
-            <p>For aspiring content creators and digital artists. Prepare a sample edited photo, video, or graphic design.</p>
-            <span class="requirements-tag">Requirements + F2F Skill Test</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card">
-        <h2>Admission Requirements</h2>
-        <div class="section-sub">Required for all applicants regardless of program</div>
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <div class="exam-item">
-            <div class="exam-item-label">Document 1</div>
-            <div class="exam-item-value">PSA Birth Certificate (photocopy or scanned copy)</div>
-          </div>
-          <div class="exam-item">
-            <div class="exam-item-label">Document 2</div>
-            <div class="exam-item-value">Transcript of Records / Form 138 (Grade 6 report card)</div>
-          </div>
-          <div class="exam-item">
-            <div class="exam-item-label">Document 3</div>
-            <div class="exam-item-value">Good Moral Certificate from current or previous school</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── CONTACT TAB ── -->
-    <div class="tab-page" id="tab-contact">
-      <div class="page-header">
-        <h1>Contact Us</h1>
-        <p>Reach out to the RMCHS Admissions Office for inquiries</p>
-      </div>
-
-      <div class="content-card">
-        <h2>Admissions Office</h2>
-        <div class="section-sub">Ramon Magsaysay (Cubao) High School</div>
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <h4>Address</h4>
-              <p>Ermin Garcia St. Brgy. Pinagkaisahan<br/>Co. EDSA, Cubao, Quezon City<br/>Metro Manila, 1109</p>
+        <div class="content-card">
+          <h2>Admissions Office</h2>
+          <div class="section-sub">Ramon Magsaysay (Cubao) High School</div>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>Ermin Garcia St. Brgy. Pinagkaisahan<br/>Co. EDSA, Cubao, Quezon City<br/>Metro Manila, 1109</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:hs.ramonmagsaysaycubao@depedqc.ph">hs.ramonmagsaysaycubao@depedqc.ph</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">1️⃣</div>
+              <div>
+                <h4>Office Hours</h4>
+                <p>Monday to Friday<br/>8:00 AM — 4:00 PM</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <div>
+                <h4>Facebook Page</h4>
+                <p><a href="https://www.facebook.com/profile.php?id=100063924610263" target="_blank">Ramon Magsaysay (Cubao) High School</a></p>
+              </div>
             </div>
           </div>
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div>
-              <h4>Email</h4>
-              <p><a href="mailto:hs.ramonmagsaysaycubao@depedqc.ph">hs.ramonmagsaysaycubao@depedqc.ph</a></p>
+        </div>
+
+        <div class="content-card">
+          <h2>Focal Persons</h2>
+          <div class="section-sub">Contact the appropriate focal person for your concern</div>
+          <div class="focal-persons">
+            <h3>Senior High School Admissions</h3>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Michelle Bartolome</h4>
+                <p>HT VI — AP Department</p>
+              </div>
+              <div class="focal-person-contact">09602620654</div>
+            </div>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Melani R. Santos</h4>
+                <p>HT VI — TLE Department</p>
+              </div>
+              <div class="focal-person-contact">09228990935</div>
             </div>
           </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <h4>Office Hours</h4>
-              <p>Monday to Friday<br/>8:00 AM — 4:00 PM</p>
+          <br/>
+          <div class="focal-persons">
+            <h3>Junior High School Admissions</h3>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Anabel B. Mejia</h4>
+                <p>HT VI — Science Department (STE)</p>
+              </div>
+              <div class="focal-person-contact">091613544997</div>
+            </div>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Dr. Florian L. Ruiz</h4>
+                <p>HT VI — Filipino Department (Regular/SPA)</p>
+              </div>
+              <div class="focal-person-contact">09357812084</div>
+            </div>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Mariel D.C. Isiderio</h4>
+                <p>HT III — MAPEH Department (SPA)</p>
+              </div>
+              <div class="focal-person-contact">(0923) 1791702</div>
             </div>
           </div>
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-          <div class="contact-item">
-  <div class="contact-icon">📱</div>
-  <div>
-    <h4>Facebook Page</h4>
-    <p><a href="https://www.facebook.com/profile.php?id=100063924610263" target="_blank">Ramon Magsaysay (Cubao) High School</a></p>
+          <br/>
+          <div class="focal-persons">
+            <h3>Other Programs</h3>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>Crisanta Jimenez</h4>
+                <p>Teacher — Special Needs Education (SNED)</p>
+              </div>
+              <div class="focal-person-contact">09195556697</div>
+            </div>
+            <div class="focal-person">
+              <div class="focal-person-info">
+                <h4>John Daryl Louz C. Bulan</h4>
+                <p>ALS Teacher I — Alternative Learning System</p>
+              </div>
+              <div class="focal-person-contact">09543081291</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <strong>Ramon Magsaysay (Cubao) High School</strong> &nbsp;|&nbsp;
+      Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp;
+      hs.ramonmagsaysaycubao@depedqc.ph
+    </footer>
+
   </div>
-</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="content-card">
-        <h2>Focal Persons</h2>
-        <div class="section-sub">Contact the appropriate focal person for your concern</div>
-        <div class="focal-persons">
-          <h3>Senior High School Admissions</h3>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Michelle Bartolome</h4>
-              <p>HT VI — AP Department</p>
-            </div>
-            <div class="focal-person-contact">09602620654</div>
-          </div>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Melani R. Santos</h4>
-              <p>HT VI — TLE Department</p>
-            </div>
-            <div class="focal-person-contact">09228990935</div>
-          </div>
-        </div>
-        <br/>
-        <div class="focal-persons">
-          <h3>Junior High School Admissions</h3>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Anabel B. Mejia</h4>
-              <p>HT VI — Science Department (STE)</p>
-            </div>
-            <div class="focal-person-contact">091613544997</div>
-          </div>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Dr. Florian L. Ruiz</h4>
-              <p>HT VI — Filipino Department (Regular/SPA)</p>
-            </div>
-            <div class="focal-person-contact">09357812084</div>
-          </div>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Mariel D.C. Isiderio</h4>
-              <p>HT III — MAPEH Department (SPA)</p>
-            </div>
-            <div class="focal-person-contact">(0923) 1791702</div>
-          </div>
-        </div>
-        <br/>
-        <div class="focal-persons">
-          <h3>Other Programs</h3>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>Crisanta Jimenez</h4>
-              <p>Teacher — Special Needs Education (SNED)</p>
-            </div>
-            <div class="focal-person-contact">09195556697</div>
-          </div>
-          <div class="focal-person">
-            <div class="focal-person-info">
-              <h4>John Daryl Louz C. Bulan</h4>
-              <p>ALS Teacher I — Alternative Learning System</p>
-            </div>
-            <div class="focal-person-contact">09543081291</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbzbmw_YLd6Mq0qH0tARe2Nd32EUx0GyVFPmEFaSwvmlo0HZnezgA2FLt-OHgQINmAA3/exec";
 
-  </main>
+    const STATUS_CONFIG = {
+      "Applied": {
+        badge: "badge-applied", label: "Applied", msg: "msg-applied",
+        message: "Your application has been received! Our Admissions Office will begin reviewing your submitted documents shortly.",
+        steps: ["done", "none", "none", "none", "none"]
+      },
+      "Under Review": {
+        badge: "badge-under-review", label: "Under Review", msg: "msg-under-review",
+        message: "Your documents are currently being reviewed by our Admissions Officer. Please wait for further updates. Do not resubmit unless you receive an Incomplete notice.",
+        steps: ["done", "active", "none", "none", "none"]
+      },
+      "Incomplete": {
+        badge: "badge-incomplete", label: "Incomplete", msg: "msg-incomplete",
+        message: "Some of your submitted documents need attention. Please review the officer's notes below and resubmit your documents.",
+        steps: ["done", "done", "incomplete", "none", "none"]
+      },
+      "Verified": {
+        badge: "badge-verified", label: "Verified", msg: "msg-verified",
+        message: "Your documents have been verified! Your Test Permit is being prepared and will be sent to your email shortly.",
+        steps: ["done", "done", "none", "active", "none"]
+      },
+      "Permit Issued": {
+        badge: "badge-permit-issued", label: "Permit Issued", msg: "msg-permit-issued",
+        message: "Congratulations! Your Test Permit has been issued. Please download and print it on A4 paper. Bring the printed permit and one (1) valid ID on the day of your examination.",
+        steps: ["done", "done", "none", "done", "active"]
+      }
+    };
 
-  <footer>
-    <strong>Ramon Magsaysay (Cubao) High School</strong> &nbsp;|&nbsp;
-    Ermin Garcia St. Brgy. Pinagkaisahan, Co. EDSA, Cubao, Quezon City &nbsp;|&nbsp;
-    hs.ramonmagsaysaycubao@depedqc.ph
-  </footer>
+    const STEP_IDS = ["step-applied", "step-review", "step-incomplete", "step-verified", "step-permit"];
 
-</div>
-
-<script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbzbmw_YLd6Mq0qH0tARe2Nd32EUx0GyVFPmEFaSwvmlo0HZnezgA2FLt-OHgQINmAA3/exec";
-
-  const STATUS_CONFIG = {
-    "Applied": {
-      badge: "badge-applied", label: "Applied", msg: "msg-applied",
-      message: "Your application has been received! Our Admissions Office will begin reviewing your submitted documents shortly.",
-      steps: ["done", "none", "none", "none", "none"]
-    },
-    "Under Review": {
-      badge: "badge-under-review", label: "Under Review", msg: "msg-under-review",
-      message: "Your documents are currently being reviewed by our Admissions Officer. Please wait for further updates. Do not resubmit unless you receive an Incomplete notice.",
-      steps: ["done", "active", "none", "none", "none"]
-    },
-    "Incomplete": {
-      badge: "badge-incomplete", label: "Incomplete", msg: "msg-incomplete",
-      message: "Some of your submitted documents need attention. Please review the officer's notes below and resubmit your documents.",
-      steps: ["done", "done", "incomplete", "none", "none"]
-    },
-    "Verified": {
-      badge: "badge-verified", label: "Verified", msg: "msg-verified",
-      message: "Your documents have been verified! Your Test Permit is being prepared and will be sent to your email shortly.",
-      steps: ["done", "done", "none", "active", "none"]
-    },
-    "Permit Issued": {
-      badge: "badge-permit-issued", label: "Permit Issued", msg: "msg-permit-issued",
-      message: "Congratulations! Your Test Permit has been issued. Please download and print it on A4 paper. Bring the printed permit and one (1) valid ID on the day of your examination.",
-      steps: ["done", "done", "none", "done", "active"]
-    }
-  };
-
-  const STEP_IDS = ["step-applied", "step-review", "step-incomplete", "step-verified", "step-permit"];
-
-  function showTab(tab) {
-    document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    document.getElementById('nav-' + tab).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  async function checkStatus() {
-    const applicantId = document.getElementById("applicantId").value.trim();
-    const email = document.getElementById("email").value.trim().toLowerCase();
-    const btn = document.getElementById("checkBtn");
-    const btnText = document.getElementById("btnText");
-    const spinner = document.getElementById("spinner");
-    const errorBox = document.getElementById("errorBox");
-    const resultCard = document.getElementById("resultCard");
-
-    if (!applicantId || !email) {
-      showError("Please enter both your Applicant ID and email address.");
-      return;
+    function showTab(tab) {
+      document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      document.getElementById('nav-' + tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    btn.disabled = true;
-    btnText.style.display = "none";
-    spinner.style.display = "block";
-    errorBox.style.display = "none";
-    resultCard.style.display = "none";
+    async function checkStatus() {
+      const applicantId = document.getElementById("applicantId").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const btn = document.getElementById("checkBtn");
+      const btnText = document.getElementById("btnText");
+      const spinner = document.getElementById("spinner");
+      const errorBox = document.getElementById("errorBox");
+      const resultCard = document.getElementById("resultCard");
 
-    try {
-      const url = `${API_URL}?applicant_id=${encodeURIComponent(applicantId)}&email=${encodeURIComponent(email)}`;
-      const res = await fetch(url);
-      const data = await res.json();
-
-      if (!data.success) {
-        showError(data.message || "Record not found. Please check your Applicant ID and email.");
+      if (!applicantId || !email) {
+        showError("Please enter both your Applicant ID and email address.");
         return;
       }
 
-      renderResult(data);
+      btn.disabled = true;
+      btnText.style.display = "none";
+      spinner.style.display = "block";
+      errorBox.style.display = "none";
+      resultCard.style.display = "none";
 
-    } catch (err) {
-      showError("Unable to connect. Please try again in a moment.");
-    } finally {
-      btn.disabled = false;
-      btnText.style.display = "block";
-      spinner.style.display = "none";
-    }
-  }
+      try {
+        const url = `${API_URL}?applicant_id=${encodeURIComponent(applicantId)}&email=${encodeURIComponent(email)}`;
+        const res = await fetch(url);
+        const data = await res.json();
 
-  function renderResult(data) {
-    const config = STATUS_CONFIG[data.status] || STATUS_CONFIG["Applied"];
+        if (!data.success) {
+          showError(data.message || "Record not found. Please check your Applicant ID and email.");
+          return;
+        }
 
-    document.getElementById("resultId").textContent = data.applicantId;
-    document.getElementById("resultName").textContent = data.fullName;
-    document.getElementById("resultProgram").textContent = data.program;
+        renderResult(data);
 
-    const badge = document.getElementById("resultBadge");
-    badge.className = "result-status-badge " + config.badge;
-    badge.textContent = config.label;
-
-    STEP_IDS.forEach((id, i) => {
-      const el = document.getElementById(id);
-      el.className = "step";
-      const state = config.steps[i];
-      if (state === "done") el.classList.add("done");
-      else if (state === "active") el.classList.add("active");
-      else if (state === "incomplete") el.classList.add("incomplete");
-    });
-
-    const msgEl = document.getElementById("statusMessage");
-    msgEl.className = "status-message " + config.msg;
-    msgEl.textContent = config.message;
-
-    const examDetails = document.getElementById("examDetails");
-    const downloadWrap = document.getElementById("downloadWrap");
-    const resubmitWrap = document.getElementById("resubmitWrap");
-
-    examDetails.style.display = "none";
-    downloadWrap.style.display = "none";
-    resubmitWrap.style.display = "none";
-
-    if (data.status === "Permit Issued") {
-      examDetails.style.display = "block";
-      downloadWrap.style.display = "block";
-      document.getElementById("examDate").textContent = data.examDate || "—";
-      document.getElementById("examTime").textContent = data.examTime || "—";
-      document.getElementById("examVenue").textContent = data.examVenue || "—";
-      document.getElementById("reportTime").textContent = data.reportTime || "—";
-      document.getElementById("permitType").textContent = data.permitType || "—";
-      document.getElementById("dateIssued").textContent = data.dateIssued || "—";
-      document.getElementById("downloadBtn").href = data.permitUrl || "#";
-
-    } else if (data.status === "Incomplete") {
-      resubmitWrap.style.display = "block";
-      const notes = data.officerNotes || "";
-      document.getElementById("officerNotes").textContent =
-        notes && !notes.startsWith("Drive Folder")
-          ? notes
-          : "Please resubmit your documents. Make sure they are clear, complete, and readable.";
-      window._resubmitToken = data.resubmitToken;
-      window._applicantId = data.applicantId;
+      } catch (err) {
+        showError("Unable to connect. Please try again in a moment.");
+      } finally {
+        btn.disabled = false;
+        btnText.style.display = "block";
+        spinner.style.display = "none";
+      }
     }
 
-    document.getElementById("resultCard").style.display = "block";
-    document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+    function renderResult(data) {
+      const config = STATUS_CONFIG[data.status] || STATUS_CONFIG["Applied"];
 
-  function showError(msg) {
-    const errorBox = document.getElementById("errorBox");
-    errorBox.textContent = msg;
-    errorBox.style.display = "block";
-  }
+      document.getElementById("resultId").textContent = data.applicantId;
+      document.getElementById("resultName").textContent = data.fullName;
+      document.getElementById("resultProgram").textContent = data.program;
 
-  async function submitResubmission() {
-    const filePSA = document.getElementById("filePSA").files[0];
-    const fileForm138 = document.getElementById("fileForm138").files[0];
-    const fileGoodMoral = document.getElementById("fileGoodMoral").files[0];
+      const badge = document.getElementById("resultBadge");
+      badge.className = "result-status-badge " + config.badge;
+      badge.textContent = config.label;
 
-    if (!filePSA || !fileForm138 || !fileGoodMoral) {
-      alert("Please upload all 3 required documents before submitting.");
-      return;
-    }
-
-    const btn = document.getElementById("resubmitBtn");
-    btn.disabled = true;
-    btn.textContent = "Uploading...";
-
-    try {
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(",")[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
+      STEP_IDS.forEach((id, i) => {
+        const el = document.getElementById(id);
+        el.className = "step";
+        const state = config.steps[i];
+        if (state === "done") el.classList.add("done");
+        else if (state === "active") el.classList.add("active");
+        else if (state === "incomplete") el.classList.add("incomplete");
       });
 
-      const [psaData, form138Data, goodMoralData] = await Promise.all([
-        toBase64(filePSA),
-        toBase64(fileForm138),
-        toBase64(fileGoodMoral)
-      ]);
+      const msgEl = document.getElementById("statusMessage");
+      msgEl.className = "status-message " + config.msg;
+      msgEl.textContent = config.message;
 
-      const payload = {
-        applicant_id: window._applicantId,
-        resubmit_token: window._resubmitToken,
-        files: [
-          { name: "PSA_" + filePSA.name, mimeType: filePSA.type, data: psaData },
-          { name: "Form138_" + fileForm138.name, mimeType: fileForm138.type, data: form138Data },
-          { name: "GoodMoral_" + fileGoodMoral.name, mimeType: fileGoodMoral.type, data: goodMoralData }
-        ]
-      };
+      const examDetails = document.getElementById("examDetails");
+      const downloadWrap = document.getElementById("downloadWrap");
+      const resubmitWrap = document.getElementById("resubmitWrap");
 
-      const res = await fetch(API_URL, {
-        method: "POST",
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
+      examDetails.style.display = "none";
+      downloadWrap.style.display = "none";
+      resubmitWrap.style.display = "none";
 
-      if (data.success) {
-        document.getElementById("resubmitSuccess").style.display = "block";
-        btn.style.display = "none";
-      } else {
-        alert(data.message || "Submission failed. Please try again.");
+      if (data.status === "Permit Issued") {
+        examDetails.style.display = "block";
+        downloadWrap.style.display = "block";
+        document.getElementById("examDate").textContent = data.examDate || "—";
+        document.getElementById("examTime").textContent = data.examTime || "—";
+        document.getElementById("examVenue").textContent = data.examVenue || "—";
+        document.getElementById("reportTime").textContent = data.reportTime || "—";
+        document.getElementById("permitType").textContent = data.permitType || "—";
+        document.getElementById("dateIssued").textContent = data.dateIssued || "—";
+        document.getElementById("downloadBtn").href = data.permitUrl || "#";
+
+      } else if (data.status === "Incomplete") {
+        resubmitWrap.style.display = "block";
+        const notes = data.officerNotes || "";
+        document.getElementById("officerNotes").textContent =
+          notes && !notes.startsWith("Drive Folder")
+            ? notes
+            : "Please resubmit your documents. Make sure they are clear, complete, and readable.";
+        window._resubmitToken = data.resubmitToken;
+        window._applicantId = data.applicantId;
+      }
+
+      document.getElementById("resultCard").style.display = "block";
+      document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function showError(msg) {
+      const errorBox = document.getElementById("errorBox");
+      errorBox.textContent = msg;
+      errorBox.style.display = "block";
+    }
+
+    async function submitResubmission() {
+      const filePSA = document.getElementById("filePSA").files[0];
+      const fileForm138 = document.getElementById("fileForm138").files[0];
+      const fileGoodMoral = document.getElementById("fileGoodMoral").files[0];
+
+      if (!filePSA || !fileForm138 || !fileGoodMoral) {
+        alert("Please upload all 3 required documents before submitting.");
+        return;
+      }
+
+      const btn = document.getElementById("resubmitBtn");
+      btn.disabled = true;
+      btn.textContent = "Uploading...";
+
+      try {
+        const toBase64 = file => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result.split(",")[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+
+        const [psaData, form138Data, goodMoralData] = await Promise.all([
+          toBase64(filePSA),
+          toBase64(fileForm138),
+          toBase64(fileGoodMoral)
+        ]);
+
+        const payload = {
+          applicant_id: window._applicantId,
+          resubmit_token: window._resubmitToken,
+          files: [
+            { name: "PSA_" + filePSA.name, mimeType: filePSA.type, data: psaData },
+            { name: "Form138_" + fileForm138.name, mimeType: fileForm138.type, data: form138Data },
+            { name: "GoodMoral_" + fileGoodMoral.name, mimeType: fileGoodMoral.type, data: goodMoralData }
+          ]
+        };
+
+        const res = await fetch(API_URL, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById("resubmitSuccess").style.display = "block";
+          btn.style.display = "none";
+        } else {
+          alert(data.message || "Submission failed. Please try again.");
+          btn.disabled = false;
+          btn.textContent = "Submit Documents";
+        }
+
+      } catch (err) {
+        alert("An error occurred. Please try again.");
         btn.disabled = false;
         btn.textContent = "Submit Documents";
       }
-
-    } catch (err) {
-      alert("An error occurred. Please try again.");
-      btn.disabled = false;
-      btn.textContent = "Submit Documents";
     }
-  }
 
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") checkStatus();
-  });
-</script>
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") checkStatus();
+    });
+  </script>
 </body>
 </html>
